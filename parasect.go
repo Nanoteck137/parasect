@@ -101,7 +101,6 @@ type ProbeResult struct {
 }
 
 func ProbeTrack(filepath string) (ProbeResult, error) {
-	// ffprobe -v quiet -print_format json -show_format -show_streams input
 	data, err := RunFFprobe(false, "-v", "quiet", "-print_format", "json", "-show_format", "-show_streams", filepath)
 	if err != nil {
 		return ProbeResult{}, err
