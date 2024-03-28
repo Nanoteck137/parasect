@@ -13,19 +13,8 @@
         pkgs = import nixpkgs {
           inherit system overlays;
         };
-
-        module = pkgs.buildGoModule {
-          pname = "parasect";
-          version = self.shortRev or "dirty";
-          src = ./.;
-
-          vendorHash = null;
-        };
       in
       {
-        packages.default = module;
-        packages.parasect = module;
-
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
             go
