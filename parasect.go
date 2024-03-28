@@ -186,3 +186,21 @@ func GetTrackInfo(filepath string) (TrackInfo, error) {
 		Tags:     probeResult.Tags,
 	}, nil
 }
+
+func IsValidExt(exts []string, ext string) bool {
+	if len(ext) == 0 {
+		return false
+	}
+
+	if ext[0] == '.' {
+		ext = ext[1:]
+	}
+
+	for _, valid := range exts {
+		if valid == ext {
+			return true
+		}
+	}
+
+	return false
+}
